@@ -1,7 +1,7 @@
 export APPS_JSON_BASE64=$(base64 -w 0 $PWD/images/indian_erp/apps.json)
 # echo $APPS_JSON_BASE64
 docker buildx build \
-  --platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
+  --platform linux/arm/v7,linux/arm64/v8,linux/amd64,linux/arm64,linux/arm/v6 \
   --build-arg=FRAPPE_PATH=https://github.com/frappe/frappe \
   --build-arg=FRAPPE_BRANCH=version-15 \
   --build-arg=PYTHON_VERSION=3.11.6 \
