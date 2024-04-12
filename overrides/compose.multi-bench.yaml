@@ -3,6 +3,7 @@ services:
     networks:
       - traefik-public
       - bench-network
+      - redis-network
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-public
@@ -11,17 +12,23 @@ services:
       - traefik.http.routers.${ROUTER}-http.entrypoints=http
       - traefik.http.routers.${ROUTER}-http.rule=Host(${SITES?SITES not set})
   configurator:
+    environment:
+      REDIS_CACHE: redis-cache:6379/${REDIS_DATABASE}
+      REDIS_QUEUE: redis-queue:6379/${REDIS_DATABASE}
     networks:
       - bench-network
       - mariadb-network
+      - redis-network
   backend:
     networks:
       - mariadb-network
       - bench-network
+      - redis-network
   websocket:
     networks:
       - bench-network
       - mariadb-network
+      - redis-network
   scheduler:
     networks:
       - bench-network
@@ -30,24 +37,19 @@ services:
     networks:
       - bench-network
       - mariadb-network
+      - redis-network
   queue-long:
     networks:
       - bench-network
       - mariadb-network
-  redis-cache:
-    networks:
-      - bench-network
-      - mariadb-network
-
-  redis-queue:
-    networks:
-      - bench-network
-      - mariadb-network
+      - redis-network
 
 networks:
   traefik-public:
     external: true
   mariadb-network:
+    external: true
+  redis-network:
     external: true
   bench-network:
     name: ${ROUTER}

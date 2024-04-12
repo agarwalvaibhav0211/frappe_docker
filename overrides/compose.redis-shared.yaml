@@ -1,0 +1,28 @@
+services:
+
+  redis-cache:
+    image: redis:6.2-alpine
+    volumes:
+      - redis-cache-data:/data
+    networks:
+      - redis-network
+      - mariadb-network
+
+  redis-queue:
+    image: redis:6.2-alpine
+    volumes:
+      - redis-queue-data:/data
+    networks:
+      - redis-network
+      - mariadb-network
+
+networks:
+  redis-network:
+    name: redis-network
+    external: false
+  mariadb-network:
+    external: true
+
+volumes:
+  redis-cache-data:
+  redis-queue-data:
