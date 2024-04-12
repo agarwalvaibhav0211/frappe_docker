@@ -1,3 +1,4 @@
+rm gitops -r
 mkdir gitops
 . ./.env
 # echo $TRAEFIK_PASSWORD_TO_SET
@@ -18,7 +19,7 @@ cp example.env ./gitops/erpnext-one.env
 sed -i "s/DB_PASSWORD=123/DB_PASSWORD=${DB_PASSWORD_TO_SET}/g" ./gitops/erpnext-one.env
 sed -i 's/DB_HOST=/DB_HOST=mariadb-database/g' ./gitops/erpnext-one.env
 sed -i 's/DB_PORT=/DB_PORT=3306/g' ./gitops/erpnext-one.env
-sed -i 's/SITES=`erp.example.com`/SITES=\`one.example.com\`,\`two.example.com\`/g' ./gitops/erpnext-one.env
+sed -i 's/SITES=`erp.example.com`/SITES=\`erpnext.mybazaar.co.in\`,\`two.example.com\`/g' ./gitops/erpnext-one.env
 echo 'ROUTER=erpnext-one' >> ./gitops/erpnext-one.env
 echo "BENCH_NETWORK=erpnext-one" >> ./gitops/erpnext-one.env
 echo "REDIS_DATABASE=1" >> ./gitops/erpnext-one.env
