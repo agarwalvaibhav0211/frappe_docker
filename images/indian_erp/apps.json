@@ -1,41 +1,14 @@
-{
-    "frappe": {
-        "resolution": {
-            "commit_hash": null,
-            "branch": null
-        },
-        "required": [],
-        "idx": 1,
-        "version": "15.21.0"
+[
+    {
+        "url": "https://github.com/frappe/erpnext",
+        "branch": "version-15"
     },
-    "payments": {
-        "is_repo": true,
-        "resolution": {
-            "commit_hash": "a3a84cdc62f8156d6ec18c15554a0f4d6bcb7d09",
-            "branch": "version-15"
-        },
-        "required": [],
-        "idx": 2,
-        "version": "0.0.1"
+    {
+        "url": "https://github.com/frappe/payments",
+        "branch": "version-15"
     },
-    "erpnext": {
-        "is_repo": true,
-        "resolution": {
-            "commit_hash": "04ca25e199cf62092c283e276104f8de880ae40f",
-            "branch": "version-15"
-        },
-        "required": [],
-        "idx": 3,
-        "version": "15.20.0"
-    },
-    "india_compliance": {
-        "is_repo": true,
-        "resolution": {
-            "commit_hash": "7bb77e21b927d4618f1b5bb88a4c54ff50e4bd0d",
-            "branch": "develop"
-        },
-        "required": [],
-        "idx": 4,
-        "version": "16.0.0-dev"
+    {
+        "url": "https://github.com/resilient-tech/india-compliance.git",
+        "branch": "version-15"
     }
-}
+]
