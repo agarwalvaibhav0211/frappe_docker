@@ -1,0 +1,5 @@
+The following information may help to resolve the situation:
+The following packages have unmet dependencies:
+wkhtmltox:arm64 : Depends: libc6:arm64 but it is not installable
+
+linux/arm/v7: aarch64

@@ -48,9 +48,9 @@ RUN useradd -ms /bin/bash frappe \
     && rm -rf ${NVM_DIR}/.cache \
     && echo 'export NVM_DIR="/home/frappe/.nvm"' >>/home/frappe/.bashrc \
     && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >>/home/frappe/.bashrc \
-    && echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >>/home/frappe/.bashrc \
+    && echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >>/home/frappe/.bashrc
     # Install wkhtmltopdf with patched qt
-    && if [ "$(uname -m)" = "aarch64" ]; then export ARCH=arm64; fi \
+RUN if [ "$(uname -m)" = "aarch64" ]; then export ARCH=arm64; fi \
     && if [ "$(uname -m)" = "x86_64" ]; then export ARCH=amd64; fi \
     && downloaded_file=wkhtmltox_${WKHTMLTOPDF_VERSION}.${WKHTMLTOPDF_DISTRO}_${ARCH}.deb \
     && curl -sLO https://github.com/wkhtmltopdf/packaging/releases/download/$WKHTMLTOPDF_VERSION/$downloaded_file \
@@ -93,8 +93,8 @@ RUN apt-get update \
     tk8.6-dev \
     cron \
     # For pandas
-    gcc \
-    build-essential \
+    gcc
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y build-essential \
     libbz2-dev \
     && rm -rf /var/lib/apt/lists/*
 
