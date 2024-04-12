@@ -10,7 +10,7 @@ docker compose --project-name erpnext-one -f ./gitops/erpnext-one.yaml up -d
 # Username: Administrator
 # one.example.com
 docker compose --project-name erpnext-one exec backend \
-  bench new-site --no-mariadb-socket --mariadb-root-password $DB_PASSWORD_TO_SET --install-app erpnext --admin-password $ERPNext_Admin_start_PASSWORD_TO_SET erpnext.mybazaar.co.in
+  bench new-site --no-mariadb-socket --mariadb-root-password $DB_PASSWORD_TO_SET --install-app erpnext --admin-password $ERPNext_Admin_start_PASSWORD_TO_SET $DOMAIN_NAME
 
 # two.example.com
 # docker compose --project-name erpnext-one exec backend \
